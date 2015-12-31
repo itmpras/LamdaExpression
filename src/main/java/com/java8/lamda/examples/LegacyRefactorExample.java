@@ -68,7 +68,7 @@ public class LegacyRefactorExample {
 
         return albums.stream().flatMap(album -> album.getTrackStream())
                 .filter(track -> track.getLength() > length)
-                .map(track1 -> track1.getTrackName())
+                .map(track -> track.getTrackName())
                 .collect(toList());
     }
 }
