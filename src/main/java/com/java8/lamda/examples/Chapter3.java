@@ -39,19 +39,18 @@ public class Chapter3 {
     }
 
     public int lamdaMemebersCount(List<Artist> artists) {
-        return (int) artists.stream().map(artist -> artist.getMembers())
+        return (int) artists.stream().map(Artist::getMembers)
                 .map(artist -> artist.count())
                 .reduce(0L, (acc, count) -> acc + count).intValue();
     }
 
 
     public int getLowerCaseCountFor(String testString) {
-        IntStream chars = testString.chars();
-        return (int) chars.filter(value -> value >= 'a' && value <= 'z').count();
+        return (int) testString.chars().filter(value -> value >= 'a' && value <= 'z').count();
     }
 
     public int getLowerCaseCountFor(List<String> strings) {
-        OptionalLong max = strings.stream().map(string -> string.chars())
+        OptionalLong max = strings.stream().map(String::chars)
                 .mapToLong(intStream -> intStream.filter(value -> value >= 'a' && value <= 'z')
                         .count()
                 ).max();
